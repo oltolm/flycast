@@ -165,7 +165,7 @@ void os_InstallFaultHandler()
 {
 #if defined(_WIN64) && !defined(TARGET_UWP)
 	prevExceptionHandler = SetUnhandledExceptionFilter(nullptr);
-	vectoredHandler = AddVectoredExceptionHandler(1, exceptionHandler);
+	vectoredHandler = AddVectoredExceptionHandler(0, exceptionHandler);
 #else
 	prevExceptionHandler = SetUnhandledExceptionFilter(exceptionHandler);
 	(void)vectoredHandler;
