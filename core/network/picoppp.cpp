@@ -1245,8 +1245,7 @@ void PicoThread::run()
 	if (ports != nullptr && config::EnableUPnP)
 	{
 		upnp = std::make_shared<MiniUPnP>();
-		pnpFuture = std::move(
-			std::async(std::launch::async, [this]()
+		pnpFuture = std::async(std::launch::async, [this]()
 			{
 				// Initialize miniupnpc and map network ports
 				ThreadName _("UPNP-init");
@@ -1261,7 +1260,7 @@ void PicoThread::run()
 						if (!upnp->AddPortMapping(ports->tcpPorts[i], true))
 							WARN_LOG(MODEM, "UPNP AddPortMapping TCP %d failed", ports->tcpPorts[i]);
 				}
-			}));
+			});
 	}
 
 	// Empty queues

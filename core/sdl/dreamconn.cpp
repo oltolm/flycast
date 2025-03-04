@@ -54,7 +54,7 @@ public:
 	DreamcastControllerConnection(const DreamcastControllerConnection&) = delete;
 
 	DreamcastControllerConnection() = default;
-	~DreamcastControllerConnection() = default;
+	virtual ~DreamcastControllerConnection() = default;
 
 	std::optional<MapleMsg> connect(int bus){
 		bool result = establishConnection(bus);
@@ -120,7 +120,7 @@ public:
 
 	DreamConnConnection() = default;
 
-	~DreamConnConnection() {
+	virtual ~DreamConnConnection() {
 		disconnect();
 	}
 
@@ -616,7 +616,7 @@ public:
 		determineHardwareBus(joystick_idx, sdl_joystick);
 	}
 
-	~DreamPicoPortConnection(){
+	virtual ~DreamPicoPortConnection(){
 		disconnect();
 	}
 
